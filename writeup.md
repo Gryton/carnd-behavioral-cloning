@@ -1,8 +1,8 @@
-#**Behavioral Cloning** 
+# **Behavioral Cloning** 
 
-##Writeup Template
+## Writeup Template
 
-###You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
+### You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
 
 ---
 
@@ -27,12 +27,12 @@ The goals / steps of this project are the following:
 [image7]: ./examples/placeholder_small.png "Flipped Image"
 
 ## Rubric Points
-###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
+### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
 
 ---
-###Files Submitted & Code Quality
+### Files Submitted & Code Quality
 
-####1. Submission includes all required files and can be used to run the simulator in autonomous mode
+#### 1. Submission includes all required files and can be used to run the simulator in autonomous mode
 
 My project includes the following files:
 * model.py containing the script to create and train the model
@@ -40,19 +40,19 @@ My project includes the following files:
 * model.h5 containing a trained convolution neural network 
 * writeup_report.md or writeup_report.pdf summarizing the results
 
-####2. Submission includes functional code
+#### 2. Submission includes functional code
 Using the Udacity provided simulator and my drive.py file, the car can be driven autonomously around the track by executing 
 ```sh
 python drive.py model.h5
 ```
 
-####3. Submission code is usable and readable
+#### 3. Submission code is usable and readable
 
 The model.py file contains the code for training and saving the convolution neural network. The file shows the pipeline I used for training and validating the model, and it contains comments to explain how the code works.
 
-###Model Architecture and Training Strategy
+### Model Architecture and Training Strategy
 
-####1. An appropriate model architecture has been employed
+#### 1. An appropriate model architecture has been employed
 
 I mostly used NVIDIA architecture to create my model. Before pushing data into network I normalize it using Keras lambda layer
 then crop to leave only road, and get rid of the rest of environment. I used RELU activations to introduce nonlinearity.
@@ -62,19 +62,19 @@ I thought of using coma.ai architecture, but I found it rather complicated and d
 directly in Keras, without Keras functions overloading. 
 
 
-####2. Attempts to reduce overfitting in the model
+#### 2. Attempts to reduce overfitting in the model
 
 The only difference that's not mentioned in NVIDIA architecture is adding dropout after first
 convolutional layer and first dense layer, to reduce overfitting. I used example test data, which contains
 few driving laps, also to reduce overfitting. Each time I've added more data to training set I've added
 the same part driven few times with different driving lines. Shuffling data also should reduce overfitting.
 
-####3. Model parameter tuning
+#### 3. Model parameter tuning
 
 The only manual model parameter tuning was done for dropout layer, where I finally ended with 0.5.
 I haven't tuned learning rate manually as I used adam optimizer and loss as mean square error.
 
-####4. Appropriate training data
+#### 4. Appropriate training data
 
 To have a fast start I used example data, as I'd have to spend lot of time to record enough data.
 It looked that it's enough data for quite nice autonomous model, especially including left and
@@ -86,9 +86,9 @@ rather left then right in whole track, so I've added image flipped left to right
 camera, to which I've added (or subtracted) bias 0.3 for angle. I started with 0.5, but car was too nervous in
 when getting a little closer to side of track, so I decreased it to 0.3.
 
-###Model Architecture and Training Strategy
+### Model Architecture and Training Strategy
 
-####1. Solution Design Approach
+#### 1. Solution Design Approach
 
 Instead trying to create whole own architecture I rather wanted to test well known architectures,
 and find the best one. 
@@ -113,7 +113,7 @@ nearly came back to track, but I thought that wasn't what was needed for this pr
 close to gravel road helped well, and then I was able to make full lap without touching kerbs.
 
 
-####2. Final Model Architecture
+#### 2. Final Model Architecture
 
 The final model architecture (model.py lines 57-75) consisted of a NVIDIA network + dropout layers.
 I used Lambda and Cropping2D layers to normalize and crop data to show only the road, then I have convolutional
@@ -122,7 +122,7 @@ kernel 5, and depth 36 and 48 respectively. Then I have 2 convolutional layers w
 Then I flatten architecture. Next goes connected layers with depth 100, 50, 10, 1, and dropout + RELU activation
 after first of them.
 
-####3. Creation of the Training Set & Training Process
+#### 3. Creation of the Training Set & Training Process
 
 Good driving line was used from example data. Here is picture how look normal driving line from example set:
 
