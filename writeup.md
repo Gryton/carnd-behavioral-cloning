@@ -109,6 +109,9 @@ and few lines ending in center of bridge when getting off I finally made it. Nex
 bridge in sharp corner, that ended in gravel shortcut. I managed to go with car by the gravel shortcut, and
 nearly came back to track, but I thought that wasn't what was needed for this project. Adding recovery when getting
 close to gravel road helped well, and then I was able to make full lap without touching kerbs.
+I had also minor problems during getting onto kerbs, but I recorded few sequences of recovering when getting to
+close to kerbs, and now it works well. It seems, that this data was quite well generalised, because sometimes
+I see really "defensive" maneuever when car tries to rescue itself just before touching a kerb.
 
 
 #### 2. Final Model Architecture
